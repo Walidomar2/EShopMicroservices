@@ -2,10 +2,10 @@
 {
     public class Product
     {
-        public string Name { get; private set; } = default!;
-        public List<string> Category { get; private set; } = new();
-        public string Description { get; private set; } = default!;
-        public string ImageFile { get; private set; } = default!;
-        public decimal Price { get; private set; }
+        public string Name { get;  set; } = default!;
+        public List<string> Category { get;  set; } = new();
+        public string Description { get;  set; } = default!;
+        public string ImageFile { get;  set; } = default!;
+        public decimal Price { get;  set; }
     }
 }
