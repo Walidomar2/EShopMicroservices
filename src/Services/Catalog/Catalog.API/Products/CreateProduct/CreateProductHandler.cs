@@ -2,7 +2,7 @@
 {
     public record CreateProductCommand(string name, List<string> Category, string Description, string ImageFile, decimal Price) 
          : ICommand<CreateProductResult>;
-    public record CreateProductResult(Guid id);
+    public record CreateProductResult(Guid Id);
 
     internal class CreateProductCommandHandler(IDocumentSession session)
         : ICommandHandler<CreateProductCommand, CreateProductResult>
@@ -22,7 +22,7 @@
             session.Store(product);
             await session.SaveChangesAsync(cancellationToken);
 
-            return  new  CreateProductResult(product.Id);
+            return new CreateProductResult(product.Id);
         }
     }
 }
