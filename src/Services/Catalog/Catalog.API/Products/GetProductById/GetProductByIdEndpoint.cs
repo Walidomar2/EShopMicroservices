@@ -10,9 +10,11 @@ namespace Catalog.API.Products.GetProductById
             {
                 var result = await sender.Send(new GetProductByIdQuery(id));
 
+
+                // there is something wrong with mapster mapping
                 var response = result.Adapt<GetProductByIdResponse>();
 
-                return Results.Ok(response);
+                return Results.Ok(result);
             })
             .WithName("GetProductById")
             .Produces<GetProductByIdResponse>(StatusCodes.Status200OK)
