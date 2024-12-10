@@ -10,7 +10,6 @@ namespace Catalog.API.Products.GetProductById
             {
                 var result = await sender.Send(new GetProductByIdQuery(id));
 
-
                 // there is something wrong with mapster mapping
                 var response = result.Adapt<GetProductByIdResponse>();
 
