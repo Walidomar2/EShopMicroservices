@@ -13,7 +13,7 @@
                     var command = request.Adapt<CreateProductCommand>();
 
                     // Send the command throught mediator 
-                    var result = sender.Send(command);
+                    var result = await sender.Send(command);
 
                     // Map the result from CreateProductResult to  CreateProductResponse
                     var response = result.Adapt<CreateProductResponse>();

@@ -4,20 +4,12 @@
          : ICommand<CreateProductResult>;
     public record CreateProductResult(Guid Id);
 
-    internal class CreateProductCommandHandler(IDocumentSession session, IValidator<CreateProductCommand> validator)
+    internal class CreateProductCommandHandler(IDocumentSession session)
         : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
         public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
         {
-            // Validation for the incoming model
-            var result = await validator.ValidateAsync(command, cancellationToken);
-            var errors = result.Errors.Select(e => e.ErrorMessage).ToList();
-
-            if (errors.Any())
-            {
-                throw new ValidationException(errors.FirstOrDefault());
-            }
-
+           
             // Create new Product entity from command object
             var product = new Product
             {
